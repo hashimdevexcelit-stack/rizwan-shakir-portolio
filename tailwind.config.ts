@@ -47,8 +47,8 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        "purple-glow": "hsl(var(--purple-glow))",
-        "purple-muted": "hsl(var(--purple-muted))",
+        "blue-glow": "hsl(var(--blue-glow))",
+        "blue-muted": "hsl(var(--blue-muted))",
         surface: {
           DEFAULT: "hsl(var(--surface))",
           elevated: "hsl(var(--surface-elevated))",
