@@ -5,6 +5,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/context/ThemeContext";
 import Index from "./pages/Index";
+import Services from "./pages/Services";
+import Blog from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
+import AIChat from "./pages/AIChat";
+import Links from "./pages/Links";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -18,6 +23,11 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogDetail />} />
+            <Route path="/ai-chat" element={<AIChat />} />
+            <Route path="/links" element={<Links />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
