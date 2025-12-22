@@ -25,9 +25,12 @@ export const AboutSection = () => {
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.8 }}
           >
-            <div className="relative">
+            <div className="relative group">
+              {/* Glow behind image */}
+              <div className="absolute inset-0 bg-primary/40 blur-3xl rounded-full scale-75 opacity-60 group-hover:opacity-100 group-hover:scale-90 transition-all duration-500 -z-10" />
+              
               {/* Main Image */}
-              <div className="relative z-10 rounded-2xl overflow-hidden aspect-[4/5] max-w-md mx-auto lg:mx-0">
+              <div className="relative z-10 rounded-2xl overflow-hidden aspect-[4/5] max-w-md mx-auto lg:mx-0 group-hover:scale-105 transition-transform duration-500 ease-out">
                 <img
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=750&fit=crop&crop=face"
                   alt="Rizwan Shakir"

@@ -4,21 +4,23 @@ import { Calendar, Sun, Moon, Menu, X } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Trainings', href: '#trainings' },
-  { label: 'Blog', href: '#blog' },
-  { label: 'AI Chat', href: '#ai-chat' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Links', href: '#links' },
+  { label: 'About', href: '#about', type: 'scroll' },
+  { label: 'Services', href: '/services', type: 'route' },
+  { label: 'Blog', href: '/blog', type: 'route' },
+  { label: 'AI Chat', href: '/ai-chat', type: 'route' },
+  { label: 'FAQ', href: '#faq', type: 'scroll' },
+  { label: 'Links', href: '/links', type: 'route' },
 ];
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme, isTransitioning } = useTheme();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +30,24 @@ export const Navbar = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNavClick = (link: typeof navLinks[0]) => {
+    if (link.type === 'scroll') {
+      if (location.pathname !== '/') {
+        navigate('/');
+        setTimeout(() => {
+          const element = document.querySelector(link.href);
+          element?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } else {
+        const element = document.querySelector(link.href);
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      navigate(link.href);
+    }
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <motion.header
@@ -66,9 +86,9 @@ export const Navbar = () => {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-1">
           {navLinks.map((link, index) => (
-            <motion.a
+            <motion.button
               key={link.label}
-              href={link.href}
+              onClick={() => handleNavClick(link)}
               className="relative px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors link-underline"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -76,7 +96,7 @@ export const Navbar = () => {
               whileHover={{ y: -2 }}
             >
               {link.label}
-            </motion.a>
+            </motion.button>
           ))}
         </nav>
 
@@ -161,17 +181,16 @@ export const Navbar = () => {
           >
             <nav className="container mx-auto px-6 py-6 flex flex-col gap-2">
               {navLinks.map((link, index) => (
-                <motion.a
+                <motion.button
                   key={link.label}
-                  href={link.href}
-                  className="px-4 py-3 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-lg transition-colors"
+                  onClick={() => handleNavClick(link)}
+                  className="px-4 py-3 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent/50 rounded-lg transition-colors text-left"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
-                </motion.a>
+                </motion.button>
               ))}
               <Button className="mt-4 gap-2 w-full">
                 <Calendar className="w-4 h-4" />
