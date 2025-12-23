@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const projects = [
   {
@@ -79,6 +80,7 @@ export const StatsSection = () => {
   const [currentProject, setCurrentProject] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!isHovered) {
@@ -172,6 +174,7 @@ export const StatsSection = () => {
                       transition={{ delay: 0.3 }}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
+                      onClick={() => navigate(`/services/${projects[currentProject].id}`)}
                     >
                       View Project
                       <ExternalLink className="w-4 h-4" />
