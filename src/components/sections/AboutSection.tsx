@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Download, MessageCircle, Award, Briefcase, Code, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import rizwanImage from '@/assets/rizwan-shakir.jfif';
 
 const highlights = [
   { icon: Award, label: '10+ Years Experience' },
@@ -32,7 +33,7 @@ export const AboutSection = () => {
               {/* Main Image */}
               <div className="relative z-10 rounded-2xl overflow-hidden aspect-[4/5] max-w-md mx-auto lg:mx-0 group-hover:scale-105 transition-transform duration-500 ease-out">
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=750&fit=crop&crop=face"
+                  src={rizwanImage}
                   alt="Rizwan Shakir"
                   className="w-full h-full object-cover"
                 />
