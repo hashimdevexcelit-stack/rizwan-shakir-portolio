@@ -88,29 +88,34 @@ interface ScrollingRowProps {
 }
 
 const ScrollingRow = ({ items, direction, speed = 30 }: ScrollingRowProps) => {
-  const duplicatedItems = [...items, ...items];
+  // Triple the items for seamless looping
+  const duplicatedItems = [...items, ...items, ...items];
+  const itemWidth = 112; // 80px width + 32px margin (mx-4 = 16px * 2)
+  const totalWidth = itemWidth * items.length;
 
   return (
-    <div className="relative overflow-hidden py-4 group">
-      <motion.div
+    <div className="relative overflow-hidden py-8 group">
+      <div
         className="flex"
-        animate={{
-          x: direction === 'left' ? [0, -50 * items.length * 2] : [-50 * items.length * 2, 0],
+        style={{
+          width: 'fit-content',
+          animation: `${direction === 'left' ? 'scroll-left' : 'scroll-right'} ${speed}s linear infinite`,
         }}
-        transition={{
-          x: {
-            duration: speed,
-            repeat: Infinity,
-            ease: 'linear',
-          },
-        }}
-        style={{ width: 'fit-content' }}
-        whileHover={{ animationPlayState: 'paused' }}
       >
         {duplicatedItems.map((tech, index) => (
           <TechItem key={`${tech.name}-${index}`} {...tech} />
         ))}
-      </motion.div>
+      </div>
+      <style>{`
+        @keyframes scroll-left {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-${totalWidth}px); }
+        }
+        @keyframes scroll-right {
+          0% { transform: translateX(-${totalWidth}px); }
+          100% { transform: translateX(0); }
+        }
+      `}</style>
     </div>
   );
 };
