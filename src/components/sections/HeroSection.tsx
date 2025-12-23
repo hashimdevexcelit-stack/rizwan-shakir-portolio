@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 export const HeroSection = () => {
   return (
@@ -132,23 +133,27 @@ export const HeroSection = () => {
           transition={{ duration: 0.6, delay: 1.2 }}
         >
           <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-            <Button
-              size="lg"
-              className="gap-2 px-8 py-6 text-base font-medium bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 group"
-            >
-              View My Services
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <Link to="/services">
+              <Button
+                size="lg"
+                className="gap-2 px-8 py-6 text-base font-medium bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 group"
+              >
+                View My Services
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
           </motion.div>
           
           <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-            <Button
-              size="lg"
-              variant="outline"
-              className="gap-2 px-8 py-6 text-base font-medium border-2 hover:bg-accent transition-all duration-300"
-            >
-              Get in Touch
-            </Button>
+            <Link to="/contact">
+              <Button
+                size="lg"
+                variant="outline"
+                className="gap-2 px-8 py-6 text-base font-medium border-2 hover:bg-accent transition-all duration-300"
+              >
+                Get in Touch
+              </Button>
+            </Link>
           </motion.div>
         </motion.div>
 
