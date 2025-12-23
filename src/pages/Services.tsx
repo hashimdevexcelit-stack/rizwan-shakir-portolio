@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Search, Code, Smartphone, Globe, Database, Palette, ShoppingCart, Cloud, Shield } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
@@ -93,6 +94,7 @@ const services = [
 ];
 
 const Services = () => {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
 
@@ -201,7 +203,12 @@ const Services = () => {
 
                   <div className="flex items-center justify-between">
                     <span className="text-lg font-bold text-primary">{service.price}</span>
-                    <Button size="sm" variant="outline" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    <Button 
+                      size="sm" 
+                      variant="outline" 
+                      className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                      onClick={() => navigate(`/services/${service.id}`)}
+                    >
                       Learn More
                     </Button>
                   </div>

@@ -1,9 +1,22 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Github, Linkedin, Twitter, Instagram, Mail, MapPin, Phone } from 'lucide-react';
 
 const links = {
-  company: ['About', 'Services', 'Portfolio', 'Careers', 'Contact'],
-  services: ['Web Development', 'Mobile Apps', 'Cloud Solutions', 'AI Integration', 'Consulting'],
+  company: [
+    { label: 'About', href: '/#about' },
+    { label: 'Services', href: '/services' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Links', href: '/links' },
+    { label: 'Contact', href: '/contact' },
+  ],
+  services: [
+    { label: 'Web Development', href: '/services/1' },
+    { label: 'Mobile Apps', href: '/services/2' },
+    { label: 'E-Commerce', href: '/services/3' },
+    { label: 'UI/UX Design', href: '/services/4' },
+    { label: 'Cloud Solutions', href: '/services/5' },
+  ],
 };
 
 const socials = [
@@ -43,7 +56,13 @@ export const Footer = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
             <h4 className="font-serif text-lg font-semibold mb-4">Company</h4>
             <ul className="space-y-3">
-              {links.company.map((link) => (<li key={link}><a href="#" className="text-muted-foreground hover:text-primary transition-colors">{link}</a></li>))}
+              {links.company.map((link) => (
+                <li key={link.label}>
+                  <Link to={link.href} className="text-muted-foreground hover:text-primary transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </motion.div>
 
@@ -51,7 +70,13 @@ export const Footer = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
             <h4 className="font-serif text-lg font-semibold mb-4">Services</h4>
             <ul className="space-y-3">
-              {links.services.map((link) => (<li key={link}><a href="#" className="text-muted-foreground hover:text-primary transition-colors">{link}</a></li>))}
+              {links.services.map((link) => (
+                <li key={link.label}>
+                  <Link to={link.href} className="text-muted-foreground hover:text-primary transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </motion.div>
 
