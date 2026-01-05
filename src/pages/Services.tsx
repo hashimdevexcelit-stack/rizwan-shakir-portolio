@@ -1,32 +1,33 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Search, Code, Smartphone, Globe, Database, Palette, ShoppingCart, Cloud, Shield, BarChart3, Gamepad2, Truck, Gem, Users, Play, Activity, Megaphone } from 'lucide-react';
+import { Search, Smartphone, Globe, BarChart3, Activity, Users, ShoppingCart, Truck, Leaf, Film } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/sections/Footer';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
-const categories = ['All', 'UI/UX Design', 'Web App', 'Mobile App', 'Dashboard', 'E-Commerce'];
+// Import project images
+import herTrackerImg from '@/assets/projects/her-tracker.png';
+import mummyTummyImg from '@/assets/projects/mummy-tummy-fix.png';
+import captureAiImg from '@/assets/projects/capture-ai.png';
+import nodukImg from '@/assets/projects/noduk.png';
+import recordoImg from '@/assets/projects/recordo.png';
+import autoAzureImg from '@/assets/projects/auto-azure.png';
+import beYouSocialImg from '@/assets/projects/be-you-social.png';
+import tradeHarmonizerImg from '@/assets/projects/trade-harmonizer.png';
+import originoImg from '@/assets/projects/origino.png';
+import sergioImg from '@/assets/projects/sergio.png';
+
+const categories = ['All', 'UI/UX Design', 'Mobile App', 'Dashboard', 'Web App', 'E-Commerce'];
 
 const services = [
   {
     id: 1,
-    title: 'Funnel Project Dashboard',
-    description: 'Subscription management dashboard with analytics, license tracking, and conversion funnel visualization.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/6d24dd230315489.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    tags: ['Dashboard', 'Analytics', 'SaaS'],
-    price: '$3,500',
-    category: 'Dashboard',
-    icon: BarChart3,
-    behanceUrl: 'https://www.behance.net/gallery/230315489/AdTech-Dashboard-UIUX-Case-Study-Design',
-  },
-  {
-    id: 2,
-    title: 'HerTracker - Mobile App',
-    description: 'Health and wellness mobile app UI/UX design for tracking fitness goals and personal health metrics.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/47b86f229083221.Y3JvcCwxNjE2LDEyNjQsMCww.png',
+    title: 'Her Tracker',
+    description: 'AI-powered menstrual cycle tracking mobile app with intuitive UI/UX design for women\'s health management.',
+    image: herTrackerImg,
     tags: ['Mobile App', 'Health', 'UI/UX'],
     price: '$4,000',
     category: 'Mobile App',
@@ -34,114 +35,103 @@ const services = [
     behanceUrl: 'https://www.behance.net/gallery/229083221/Health-and-Fitness-Mobile-APP-UIUX-Design',
   },
   {
-    id: 3,
-    title: 'ORIGINO - Olive Oil Web App',
-    description: 'Premium olive oil brand web application with elegant UI showcasing products and company story.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/73fbf0228930783.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    tags: ['Web App', 'E-Commerce', 'Branding'],
-    price: '$2,800',
-    category: 'Web App',
-    icon: Globe,
-    behanceUrl: 'https://www.behance.net/gallery/228930783/Food-Beverages-Web-App-UIUX-Design',
-  },
-  {
-    id: 4,
-    title: 'Police & Security Services',
-    description: 'Comprehensive UI/UX design for law enforcement officer solutions and security management platform.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/1c818d228598743.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    tags: ['UI/UX', 'Government', 'Security'],
-    price: '$5,000',
-    category: 'UI/UX Design',
-    icon: Shield,
-    behanceUrl: 'https://www.behance.net/gallery/228598743/Police-Security-Services-UIUX-Design',
-  },
-  {
-    id: 5,
-    title: 'Mobile Game Booking',
-    description: 'Gaming venue booking and management dashboard with real-time availability and booking tracking.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/0553c0228587891.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    tags: ['Dashboard', 'Gaming', 'Booking'],
-    price: '$3,200',
-    category: 'Dashboard',
-    icon: Gamepad2,
-    behanceUrl: 'https://www.behance.net/gallery/228587891/Mobile-Game-Booking-Management-UIUX-Design',
-  },
-  {
-    id: 6,
-    title: 'Trade & Supply Chain',
-    description: 'Enterprise dashboard for trade and supply chain management with real-time logistics tracking.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/3b1d41228519253.Y3JvcCwyMTI4LDE2NjQsMCww.png',
-    tags: ['Dashboard', 'Logistics', 'Enterprise'],
-    price: '$4,500',
-    category: 'Dashboard',
-    icon: Truck,
-    behanceUrl: 'https://www.behance.net/gallery/228519253/Trade-Supply-Chain-Dashboard-UIUX-Design',
-  },
-  {
-    id: 7,
-    title: 'E-Commerce Jewellery',
-    description: 'Luxury jewellery e-commerce platform with elegant product showcase and admin dashboard.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/528357228314207.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    tags: ['E-Commerce', 'Luxury', 'Dashboard'],
+    id: 2,
+    title: 'Mummy Tummy Fix',
+    description: 'Fitness mobile app and admin dashboard designed for postpartum mothers with workout tracking and progress monitoring.',
+    image: mummyTummyImg,
+    tags: ['Mobile App', 'Fitness', 'Dashboard'],
     price: '$3,800',
-    category: 'E-Commerce',
-    icon: Gem,
-    behanceUrl: 'https://www.behance.net/gallery/228314207/E-Commerce-Jewellery-Website-Dashboard-UIUX',
-  },
-  {
-    id: 8,
-    title: 'Be You Social App',
-    description: 'Social media mobile application UI/UX design with community features and content sharing.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/1fa735227993011.Y3JvcCwyMTI4LDE2NjQsMCww.png',
-    tags: ['Mobile App', 'Social', 'Community'],
-    price: '$4,200',
-    category: 'Mobile App',
-    icon: Users,
-    behanceUrl: 'https://www.behance.net/gallery/227993011/Social-Media-App-UI-UX-Design',
-  },
-  {
-    id: 9,
-    title: 'Entertainment Management',
-    description: 'Comprehensive entertainment management system for events, bookings, and venue management.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a014be227584757.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    tags: ['Web App', 'Entertainment', 'Management'],
-    price: '$3,000',
-    category: 'Web App',
-    icon: Play,
-    behanceUrl: 'https://www.behance.net/gallery/227584757/Entertainment-Management-System-UIUX-Design',
-  },
-  {
-    id: 10,
-    title: 'SaaS AdTech Platform',
-    description: 'Advertising technology SaaS platform with campaign management and performance analytics.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/80869e228070589.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    tags: ['SaaS', 'AdTech', 'Analytics'],
-    price: '$5,500',
-    category: 'Dashboard',
-    icon: Megaphone,
-    behanceUrl: 'https://www.behance.net/gallery/228070589/SaaS-AdTech-UIUX-Case-Study-Design',
-  },
-  {
-    id: 11,
-    title: 'Mommy Tummy App',
-    description: 'Pregnancy and maternity care mobile app with health tracking and milestone monitoring.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/8d1b05227537255.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    tags: ['Mobile App', 'Health', 'Wellness'],
-    price: '$3,500',
     category: 'Mobile App',
     icon: Activity,
     behanceUrl: 'https://www.behance.net/gallery/227537255/Health-and-Fitness-App-UIUX-Case-Study-Design',
   },
   {
-    id: 12,
-    title: 'E-Commerce Management',
-    description: 'Complete e-commerce management application with inventory, orders, and analytics dashboards.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/3b28f7227602953.Y3JvcCwyMTI4LDE2NjQsMCww.png',
-    tags: ['E-Commerce', 'Dashboard', 'Management'],
-    price: '$4,000',
+    id: 3,
+    title: 'Capture AI',
+    description: 'Conversational AI management dashboard with chat performance analytics, user engagement metrics, and conversion tracking.',
+    image: captureAiImg,
+    tags: ['Dashboard', 'AI', 'Analytics'],
+    price: '$5,500',
+    category: 'Dashboard',
+    icon: BarChart3,
+    behanceUrl: 'https://www.behance.net/gallery/230315489/AdTech-Dashboard-UIUX-Case-Study-Design',
+  },
+  {
+    id: 4,
+    title: 'Noduk',
+    description: 'Insurance deductible management platform with customer and admin dashboards for claims, coverages, and payment tracking.',
+    image: nodukImg,
+    tags: ['Dashboard', 'Insurance', 'SaaS'],
+    price: '$5,000',
+    category: 'Dashboard',
+    icon: BarChart3,
+    behanceUrl: 'https://www.behance.net/gallery/228598743/Police-Security-Services-UIUX-Design',
+  },
+  {
+    id: 5,
+    title: 'Recordo',
+    description: 'AI document automation platform that turns voice into documents. Mobile app and admin dashboard with speech-to-text features.',
+    image: recordoImg,
+    tags: ['Mobile App', 'AI', 'SaaS'],
+    price: '$4,500',
+    category: 'Mobile App',
+    icon: Globe,
+    behanceUrl: 'https://www.behance.net/gallery/228930783/Food-Beverages-Web-App-UIUX-Design',
+  },
+  {
+    id: 6,
+    title: 'Auto Azure',
+    description: 'E-commerce management SaaS platform with order tracking, payment analytics, and automated business insights dashboard.',
+    image: autoAzureImg,
+    tags: ['SaaS', 'E-Commerce', 'Dashboard'],
+    price: '$4,200',
     category: 'E-Commerce',
     icon: ShoppingCart,
     behanceUrl: 'https://www.behance.net/gallery/227602953/E-Commerce-Management-App-UIUX-Design',
+  },
+  {
+    id: 7,
+    title: 'Be You Social',
+    description: 'Social media mobile application with video sharing, community features, and modern UI/UX design for content creators.',
+    image: beYouSocialImg,
+    tags: ['Mobile App', 'Social', 'Community'],
+    price: '$4,800',
+    category: 'Mobile App',
+    icon: Users,
+    behanceUrl: 'https://www.behance.net/gallery/227993011/Social-Media-App-UI-UX-Design',
+  },
+  {
+    id: 8,
+    title: 'Trade Harmonizer',
+    description: 'Trade and supply chain management dashboard with shipment tracking, duty mitigation analytics, and HS code challenges.',
+    image: tradeHarmonizerImg,
+    tags: ['Dashboard', 'Logistics', 'Enterprise'],
+    price: '$5,500',
+    category: 'Dashboard',
+    icon: Truck,
+    behanceUrl: 'https://www.behance.net/gallery/228519253/Trade-Supply-Chain-Dashboard-UIUX-Design',
+  },
+  {
+    id: 9,
+    title: 'Origino',
+    description: 'Premium olive oil brand web application with elegant e-commerce UI, product tracking, and brand storytelling experience.',
+    image: originoImg,
+    tags: ['Web App', 'E-Commerce', 'Branding'],
+    price: '$3,500',
+    category: 'Web App',
+    icon: Leaf,
+    behanceUrl: 'https://www.behance.net/gallery/228930783/Food-Beverages-Web-App-UIUX-Design',
+  },
+  {
+    id: 10,
+    title: 'Sergio',
+    description: 'AI-powered performance training app for actors with script management, file organization, and creative workflow tools.',
+    image: sergioImg,
+    tags: ['Mobile App', 'AI', 'Entertainment'],
+    price: '$4,000',
+    category: 'Mobile App',
+    icon: Film,
+    behanceUrl: 'https://www.behance.net/gallery/227584757/Entertainment-Management-System-UIUX-Design',
   },
 ];
 
