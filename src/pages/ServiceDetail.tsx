@@ -1,191 +1,173 @@
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Check, Clock, Users, Star, MessageCircle, ExternalLink, BarChart3, Activity, Globe, Shield, Gamepad2, Truck, Gem, Play, Megaphone, ShoppingCart } from 'lucide-react';
+import { ArrowLeft, Check, Clock, Users, Star, ExternalLink, Smartphone, Globe, BarChart3, Activity, Truck, Leaf, Film, ShoppingCart } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/sections/Footer';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
+// Import project images
+import herTrackerImg from '@/assets/projects/her-tracker.png';
+import mummyTummyImg from '@/assets/projects/mummy-tummy-fix.png';
+import captureAiImg from '@/assets/projects/capture-ai.png';
+import nodukImg from '@/assets/projects/noduk.png';
+import recordoImg from '@/assets/projects/recordo.png';
+import autoAzureImg from '@/assets/projects/auto-azure.png';
+import beYouSocialImg from '@/assets/projects/be-you-social.png';
+import tradeHarmonizerImg from '@/assets/projects/trade-harmonizer.png';
+import originoImg from '@/assets/projects/origino.png';
+import sergioImg from '@/assets/projects/sergio.png';
+
 const services = [
   {
     id: 1,
-    title: 'Funnel Project Dashboard',
-    description: 'Subscription management dashboard with analytics, license tracking, and conversion funnel visualization.',
-    fullDescription: 'A comprehensive AdTech dashboard solution featuring subscription management, real-time analytics, license expiration tracking, and conversion funnel visualization. Built with modern UI/UX principles to provide actionable insights for marketing teams and business owners.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/6d24dd230315489.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    tags: ['Dashboard', 'Analytics', 'SaaS'],
-    price: '$3,500',
-    duration: '2-3 weeks',
-    category: 'Dashboard',
-    icon: BarChart3,
-    behanceUrl: 'https://www.behance.net/gallery/230315489/AdTech-Dashboard-UIUX-Case-Study-Design',
-    features: ['Real-time Analytics', 'Subscription Tracking', 'Funnel Visualization', 'License Management', 'Performance Metrics', 'Custom Reports'],
-    process: ['Research & Discovery', 'Wireframing', 'Visual Design', 'Prototyping', 'User Testing', 'Final Delivery'],
-  },
-  {
-    id: 2,
-    title: 'HerTracker - Mobile App',
-    description: 'Health and wellness mobile app UI/UX design for tracking fitness goals and personal health metrics.',
-    fullDescription: 'A beautifully designed health and fitness mobile application that empowers users to track their wellness journey. Features include goal setting, progress tracking, personalized recommendations, and community engagement tools.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/47b86f229083221.Y3JvcCwxNjE2LDEyNjQsMCww.png',
+    title: 'Her Tracker',
+    description: 'AI-powered menstrual cycle tracking mobile app with intuitive UI/UX design for women\'s health management.',
+    fullDescription: 'Her Tracker is a comprehensive women\'s health mobile application designed to help users track their menstrual cycles, fertility windows, and overall wellness. The app features an elegant and intuitive interface with a calming color palette that makes daily health tracking effortless and empowering.',
+    image: herTrackerImg,
     tags: ['Mobile App', 'Health', 'UI/UX'],
     price: '$4,000',
-    duration: '3-4 weeks',
+    duration: '4 weeks',
     category: 'Mobile App',
     icon: Activity,
     behanceUrl: 'https://www.behance.net/gallery/229083221/Health-and-Fitness-Mobile-APP-UIUX-Design',
-    features: ['Health Tracking', 'Goal Setting', 'Progress Analytics', 'Workout Plans', 'Nutrition Logging', 'Community Features'],
-    process: ['User Research', 'Competitive Analysis', 'Wireframes', 'UI Design', 'Prototyping', 'Usability Testing'],
+    features: ['Cycle prediction algorithm', 'Symptom tracking', 'Calendar integration', 'Health insights dashboard', 'Reminder notifications', 'Privacy focused'],
+    process: ['User Research', 'Wireframing', 'Visual Design', 'Prototyping', 'User Testing', 'Final Delivery'],
+  },
+  {
+    id: 2,
+    title: 'Mummy Tummy Fix',
+    description: 'Fitness mobile app and admin dashboard designed for postpartum mothers with workout tracking and progress monitoring.',
+    fullDescription: 'Mummy Tummy Fix is a specialized fitness application designed for new mothers looking to regain their core strength postpartum. The app includes personalized workout plans, progress tracking, and a comprehensive admin dashboard for fitness coaches to monitor client progress.',
+    image: mummyTummyImg,
+    tags: ['Mobile App', 'Fitness', 'Dashboard'],
+    price: '$3,800',
+    duration: '5 weeks',
+    category: 'Mobile App',
+    icon: Activity,
+    behanceUrl: 'https://www.behance.net/gallery/227537255/Health-and-Fitness-App-UIUX-Case-Study-Design',
+    features: ['Personalized workout plans', 'Progress tracking', 'Daily checklist', 'Video tutorials', 'Admin dashboard', 'Community support'],
+    process: ['Research & Discovery', 'Wireframing', 'Visual Design', 'Prototyping', 'User Testing', 'Final Delivery'],
   },
   {
     id: 3,
-    title: 'ORIGINO - Olive Oil Web App',
-    description: 'Premium olive oil brand web application with elegant UI showcasing products and company story.',
-    fullDescription: 'An elegant web application designed for a premium olive oil brand. The design focuses on storytelling, product showcase, and brand heritage while providing a seamless e-commerce experience for customers seeking quality products.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/73fbf0228930783.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    tags: ['Web App', 'E-Commerce', 'Branding'],
-    price: '$2,800',
-    duration: '2-3 weeks',
-    category: 'Web App',
-    icon: Globe,
-    behanceUrl: 'https://www.behance.net/gallery/228930783/Food-Beverages-Web-App-UIUX-Design',
-    features: ['Product Showcase', 'Brand Storytelling', 'E-Commerce Integration', 'Responsive Design', 'Quality Certifications', 'Customer Reviews'],
-    process: ['Brand Analysis', 'Content Strategy', 'Visual Design', 'Development', 'Testing', 'Launch'],
+    title: 'Capture AI',
+    description: 'Conversational AI management dashboard with chat performance analytics, user engagement metrics, and conversion tracking.',
+    fullDescription: 'Capture AI is a powerful conversational AI management platform that helps businesses track and optimize their chatbot performance. The dashboard provides comprehensive analytics including chats started, users served, click-to-calls, and conversion rates with beautiful data visualizations.',
+    image: captureAiImg,
+    tags: ['Dashboard', 'AI', 'Analytics'],
+    price: '$5,500',
+    duration: '6 weeks',
+    category: 'Dashboard',
+    icon: BarChart3,
+    behanceUrl: 'https://www.behance.net/gallery/230315489/AdTech-Dashboard-UIUX-Case-Study-Design',
+    features: ['Real-time analytics', 'Chat performance metrics', 'User engagement tracking', 'Conversion funnel', 'Custom reporting', 'Widget settings'],
+    process: ['Business Analysis', 'System Architecture', 'Dashboard Design', 'Data Integration', 'Testing', 'Deployment'],
   },
   {
     id: 4,
-    title: 'Police & Security Services',
-    description: 'Comprehensive UI/UX design for law enforcement officer solutions and security management platform.',
-    fullDescription: 'A comprehensive security management platform designed for law enforcement agencies. Features include officer management, incident reporting, duty scheduling, and real-time communication tools to enhance operational efficiency.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/1c818d228598743.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    tags: ['UI/UX', 'Government', 'Security'],
+    title: 'Noduk',
+    description: 'Insurance deductible management platform with customer and admin dashboards for claims, coverages, and payment tracking.',
+    fullDescription: 'Noduk is an innovative insurance deductible management platform that simplifies the insurance experience for both customers and administrators. The platform includes comprehensive dashboards for tracking coverages, managing claims, and processing payments across multiple insurance types.',
+    image: nodukImg,
+    tags: ['Dashboard', 'Insurance', 'SaaS'],
     price: '$5,000',
-    duration: '4-6 weeks',
-    category: 'UI/UX Design',
-    icon: Shield,
+    duration: '8 weeks',
+    category: 'Dashboard',
+    icon: BarChart3,
     behanceUrl: 'https://www.behance.net/gallery/228598743/Police-Security-Services-UIUX-Design',
-    features: ['Officer Management', 'Incident Reporting', 'Duty Scheduling', 'Real-time Communication', 'Resource Allocation', 'Analytics Dashboard'],
+    features: ['Multi-coverage management', 'Claims processing', 'Payment tracking', 'Customer dashboard', 'Admin analytics', 'Mobile app'],
     process: ['Stakeholder Interviews', 'Requirements Analysis', 'System Design', 'UI/UX Design', 'Prototype Testing', 'Documentation'],
   },
   {
     id: 5,
-    title: 'Mobile Game Booking',
-    description: 'Gaming venue booking and management dashboard with real-time availability and booking tracking.',
-    fullDescription: 'A dynamic booking management system for gaming venues. The platform enables customers to book gaming stations, view real-time availability, and manage their gaming sessions while providing venue owners with comprehensive management tools.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/0553c0228587891.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    tags: ['Dashboard', 'Gaming', 'Booking'],
-    price: '$3,200',
-    duration: '2-3 weeks',
-    category: 'Dashboard',
-    icon: Gamepad2,
-    behanceUrl: 'https://www.behance.net/gallery/228587891/Mobile-Game-Booking-Management-UIUX-Design',
-    features: ['Real-time Availability', 'Online Booking', 'Session Management', 'Payment Integration', 'Customer Profiles', 'Revenue Analytics'],
-    process: ['Market Research', 'User Flow Design', 'Interface Design', 'Booking System', 'Testing', 'Deployment'],
+    title: 'Recordo',
+    description: 'AI document automation platform that turns voice into documents. Mobile app and admin dashboard with speech-to-text features.',
+    fullDescription: 'Recordo revolutionizes document creation by transforming voice recordings into professionally formatted documents. The platform includes a mobile app for recording and a web dashboard for document management, making it perfect for professionals who need to quickly capture and organize their thoughts.',
+    image: recordoImg,
+    tags: ['Mobile App', 'AI', 'SaaS'],
+    price: '$4,500',
+    duration: '6 weeks',
+    category: 'Mobile App',
+    icon: Globe,
+    behanceUrl: 'https://www.behance.net/gallery/228930783/Food-Beverages-Web-App-UIUX-Design',
+    features: ['Voice-to-document conversion', 'AI transcription', 'Document templates', 'Cloud storage', 'Multi-platform sync', 'Export options'],
+    process: ['Market Research', 'Feature Planning', 'UI/UX Design', 'Prototype', 'User Testing', 'Launch'],
   },
   {
     id: 6,
-    title: 'Trade & Supply Chain',
-    description: 'Enterprise dashboard for trade and supply chain management with real-time logistics tracking.',
-    fullDescription: 'An enterprise-grade supply chain management dashboard providing real-time visibility into logistics operations. Features include shipment tracking, inventory management, vendor coordination, and predictive analytics.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/3b1d41228519253.Y3JvcCwyMTI4LDE2NjQsMCww.png',
-    tags: ['Dashboard', 'Logistics', 'Enterprise'],
-    price: '$4,500',
-    duration: '4-5 weeks',
-    category: 'Dashboard',
-    icon: Truck,
-    behanceUrl: 'https://www.behance.net/gallery/228519253/Trade-Supply-Chain-Dashboard-UIUX-Design',
-    features: ['Shipment Tracking', 'Inventory Management', 'Vendor Portal', 'Predictive Analytics', 'Document Management', 'Compliance Tracking'],
-    process: ['Business Analysis', 'System Architecture', 'Dashboard Design', 'Data Integration', 'Testing', 'Training'],
-  },
-  {
-    id: 7,
-    title: 'E-Commerce Jewellery',
-    description: 'Luxury jewellery e-commerce platform with elegant product showcase and admin dashboard.',
-    fullDescription: 'A sophisticated e-commerce platform for luxury jewellery featuring elegant product presentations, detailed product views, and a comprehensive admin dashboard for inventory and order management.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/528357228314207.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    tags: ['E-Commerce', 'Luxury', 'Dashboard'],
-    price: '$3,800',
-    duration: '3-4 weeks',
-    category: 'E-Commerce',
-    icon: Gem,
-    behanceUrl: 'https://www.behance.net/gallery/228314207/E-Commerce-Jewellery-Website-Dashboard-UIUX',
-    features: ['Product Gallery', 'Zoom Views', 'Wishlist', 'Admin Dashboard', 'Order Management', 'Customer Analytics'],
-    process: ['Brand Research', 'Product Photography Guide', 'UI Design', 'E-Commerce Setup', 'Payment Integration', 'Launch'],
-  },
-  {
-    id: 8,
-    title: 'Be You Social App',
-    description: 'Social media mobile application UI/UX design with community features and content sharing.',
-    fullDescription: 'A vibrant social media application designed to foster genuine connections. Features include content sharing, community building, direct messaging, and personalized feeds that prioritize meaningful interactions.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/1fa735227993011.Y3JvcCwyMTI4LDE2NjQsMCww.png',
-    tags: ['Mobile App', 'Social', 'Community'],
+    title: 'Auto Azure',
+    description: 'E-commerce management SaaS platform with order tracking, payment analytics, and automated business insights dashboard.',
+    fullDescription: 'Auto Azure is a comprehensive e-commerce management solution designed to help online sellers track orders, analyze payments, and gain valuable business insights. The platform supports both light and dark modes and provides detailed analytics for visits, orders, shipments, and revenue.',
+    image: autoAzureImg,
+    tags: ['SaaS', 'E-Commerce', 'Dashboard'],
     price: '$4,200',
-    duration: '4-5 weeks',
-    category: 'Mobile App',
-    icon: Users,
-    behanceUrl: 'https://www.behance.net/gallery/227993011/Social-Media-App-UI-UX-Design',
-    features: ['Content Sharing', 'Direct Messaging', 'Community Groups', 'Personalized Feed', 'Story Features', 'Profile Customization'],
-    process: ['User Research', 'Feature Planning', 'UI/UX Design', 'Prototype', 'User Testing', 'Iteration'],
-  },
-  {
-    id: 9,
-    title: 'Entertainment Management',
-    description: 'Comprehensive entertainment management system for events, bookings, and venue management.',
-    fullDescription: 'A complete entertainment management solution for event organizers and venue managers. The platform streamlines event planning, ticket sales, artist bookings, and venue scheduling in one unified interface.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a014be227584757.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    tags: ['Web App', 'Entertainment', 'Management'],
-    price: '$3,000',
-    duration: '3-4 weeks',
-    category: 'Web App',
-    icon: Play,
-    behanceUrl: 'https://www.behance.net/gallery/227584757/Entertainment-Management-System-UIUX-Design',
-    features: ['Event Planning', 'Ticket Sales', 'Artist Management', 'Venue Scheduling', 'Revenue Tracking', 'Marketing Tools'],
-    process: ['Requirements Gathering', 'System Design', 'UI Design', 'Feature Development', 'Integration', 'Launch'],
-  },
-  {
-    id: 10,
-    title: 'SaaS AdTech Platform',
-    description: 'Advertising technology SaaS platform with campaign management and performance analytics.',
-    fullDescription: 'A powerful advertising technology platform for digital marketers. Features comprehensive campaign management, real-time performance analytics, audience targeting, and ROI optimization tools.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/80869e228070589.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    tags: ['SaaS', 'AdTech', 'Analytics'],
-    price: '$5,500',
-    duration: '5-6 weeks',
-    category: 'Dashboard',
-    icon: Megaphone,
-    behanceUrl: 'https://www.behance.net/gallery/228070589/SaaS-AdTech-UIUX-Case-Study-Design',
-    features: ['Campaign Management', 'Real-time Analytics', 'Audience Targeting', 'A/B Testing', 'Budget Optimization', 'Custom Reports'],
-    process: ['Market Analysis', 'Feature Specification', 'UX Design', 'Dashboard Development', 'Analytics Integration', 'Beta Testing'],
-  },
-  {
-    id: 11,
-    title: 'Mommy Tummy App',
-    description: 'Pregnancy and maternity care mobile app with health tracking and milestone monitoring.',
-    fullDescription: 'A caring companion app for expectant mothers, featuring pregnancy milestone tracking, health monitoring, appointment reminders, and a supportive community. Designed with warmth and accessibility in mind.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/8d1b05227537255.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    tags: ['Mobile App', 'Health', 'Wellness'],
-    price: '$3,500',
-    duration: '3-4 weeks',
-    category: 'Mobile App',
-    icon: Activity,
-    behanceUrl: 'https://www.behance.net/gallery/227537255/Health-and-Fitness-App-UIUX-Case-Study-Design',
-    features: ['Milestone Tracking', 'Health Monitoring', 'Appointment Reminders', 'Community Support', 'Educational Content', 'Photo Journal'],
-    process: ['User Research', 'Content Planning', 'UI Design', 'Prototype', 'Medical Review', 'Launch'],
-  },
-  {
-    id: 12,
-    title: 'E-Commerce Management',
-    description: 'Complete e-commerce management application with inventory, orders, and analytics dashboards.',
-    fullDescription: 'A comprehensive e-commerce management solution providing store owners with powerful tools for inventory management, order processing, customer relationship management, and business analytics.',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/3b28f7227602953.Y3JvcCwyMTI4LDE2NjQsMCww.png',
-    tags: ['E-Commerce', 'Dashboard', 'Management'],
-    price: '$4,000',
-    duration: '3-4 weeks',
+    duration: '5 weeks',
     category: 'E-Commerce',
     icon: ShoppingCart,
     behanceUrl: 'https://www.behance.net/gallery/227602953/E-Commerce-Management-App-UIUX-Design',
-    features: ['Inventory Management', 'Order Processing', 'Customer CRM', 'Sales Analytics', 'Multi-channel Sync', 'Reporting Tools'],
+    features: ['Order management', 'Payment analytics', 'Shipment tracking', 'Revenue reports', 'Dark/Light modes', 'Real-time data'],
     process: ['Business Analysis', 'Feature Planning', 'UI/UX Design', 'Development', 'Integration', 'Training'],
+  },
+  {
+    id: 7,
+    title: 'Be You Social',
+    description: 'Social media mobile application with video sharing, community features, and modern UI/UX design for content creators.',
+    fullDescription: 'Be You Social is a next-generation social media platform that empowers users to express themselves authentically. With features like video sharing, community feeds, and engagement tracking, the app provides content creators with all the tools they need to build their audience.',
+    image: beYouSocialImg,
+    tags: ['Mobile App', 'Social', 'Community'],
+    price: '$4,800',
+    duration: '7 weeks',
+    category: 'Mobile App',
+    icon: Smartphone,
+    behanceUrl: 'https://www.behance.net/gallery/227993011/Social-Media-App-UI-UX-Design',
+    features: ['Video sharing', 'Social feed', 'User profiles', 'Engagement analytics', 'Content discovery', 'Direct messaging'],
+    process: ['User Research', 'Competitive Analysis', 'Wireframes', 'UI Design', 'Prototyping', 'Usability Testing'],
+  },
+  {
+    id: 8,
+    title: 'Trade Harmonizer',
+    description: 'Trade and supply chain management dashboard with shipment tracking, duty mitigation analytics, and HS code challenges.',
+    fullDescription: 'Trade Harmonizer is an enterprise-grade supply chain management platform designed for international trade operations. The dashboard provides comprehensive visibility into shipments, duty savings, and HS code compliance, helping businesses optimize their global trade operations.',
+    image: tradeHarmonizerImg,
+    tags: ['Dashboard', 'Logistics', 'Enterprise'],
+    price: '$5,500',
+    duration: '8 weeks',
+    category: 'Dashboard',
+    icon: Truck,
+    behanceUrl: 'https://www.behance.net/gallery/228519253/Trade-Supply-Chain-Dashboard-UIUX-Design',
+    features: ['Shipment tracking', 'Duty mitigation', 'HS code management', 'Analytics dashboard', 'Compliance reporting', 'Cost savings'],
+    process: ['Business Analysis', 'System Architecture', 'Dashboard Design', 'Data Integration', 'Testing', 'Training'],
+  },
+  {
+    id: 9,
+    title: 'Origino',
+    description: 'Premium olive oil brand web application with elegant e-commerce UI, product tracking, and brand storytelling experience.',
+    fullDescription: 'Origino is a premium olive oil brand from Turkey that needed an elegant e-commerce presence. The web application showcases their high-quality, traceable extra-virgin olive oil with beautiful product pages, origin tracking, and a seamless shopping experience.',
+    image: originoImg,
+    tags: ['Web App', 'E-Commerce', 'Branding'],
+    price: '$3,500',
+    duration: '4 weeks',
+    category: 'Web App',
+    icon: Leaf,
+    behanceUrl: 'https://www.behance.net/gallery/228930783/Food-Beverages-Web-App-UIUX-Design',
+    features: ['Product showcase', 'Origin tracking', 'E-commerce checkout', 'Brand storytelling', 'Mobile responsive', 'Quality certifications'],
+    process: ['Brand Analysis', 'Content Strategy', 'Visual Design', 'Development', 'Testing', 'Launch'],
+  },
+  {
+    id: 10,
+    title: 'Sergio',
+    description: 'AI-powered performance training app for actors with script management, file organization, and creative workflow tools.',
+    fullDescription: 'Sergio is the ultimate mobile app for actors and performers, providing AI-powered tools for script management, performance tracking, and creative workflow optimization. The app helps actors organize their projects, manage scripts, and track their career progress.',
+    image: sergioImg,
+    tags: ['Mobile App', 'AI', 'Entertainment'],
+    price: '$4,000',
+    duration: '5 weeks',
+    category: 'Mobile App',
+    icon: Film,
+    behanceUrl: 'https://www.behance.net/gallery/227584757/Entertainment-Management-System-UIUX-Design',
+    features: ['Script management', 'File organization', 'Performance tracking', 'Project folders', 'AI assistance', 'Cloud backup'],
+    process: ['User Research', 'Feature Planning', 'UI/UX Design', 'Prototype', 'User Testing', 'Launch'],
   },
 ];
 
@@ -236,11 +218,11 @@ const ServiceDetail = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="relative rounded-3xl overflow-hidden mb-8">
+              <div className="relative rounded-3xl overflow-hidden mb-8 bg-card border border-border">
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-80 object-cover"
+                  className="w-full h-auto object-cover"
                 />
                 <div className="absolute top-6 right-6 w-14 h-14 rounded-2xl bg-primary flex items-center justify-center">
                   <IconComponent className="w-7 h-7 text-primary-foreground" />
@@ -322,31 +304,28 @@ const ServiceDetail = () => {
               {/* Pricing Card */}
               <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-2xl p-6 mb-6">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-muted-foreground">Starting at</span>
+                  <span className="text-muted-foreground">Starting from</span>
                   <span className="text-3xl font-bold text-primary">{service.price}</span>
                 </div>
-                <div className="flex gap-3">
-                  <Link to="/contact" className="flex-1">
-                    <Button className="w-full gap-2" size="lg">
-                      <MessageCircle className="w-5 h-5" />
-                      Get Started
-                    </Button>
-                  </Link>
+                <div className="space-y-3">
+                  <Button 
+                    className="w-full" 
+                    size="lg"
+                    onClick={() => navigate('/contact')}
+                  >
+                    Get This Design
+                  </Button>
                   <Button 
                     variant="outline" 
+                    className="w-full gap-2" 
                     size="lg"
                     onClick={() => window.open(service.behanceUrl, '_blank')}
-                    className="gap-2"
                   >
-                    <ExternalLink className="w-5 h-5" />
-                    Behance
+                    <ExternalLink className="w-4 h-4" />
+                    View on Behance
                   </Button>
                 </div>
               </div>
-
-              <p className="text-sm text-muted-foreground text-center">
-                Have questions? <Link to="/contact" className="text-primary hover:underline">Contact me</Link> for a free consultation.
-              </p>
             </motion.div>
           </div>
         </div>
