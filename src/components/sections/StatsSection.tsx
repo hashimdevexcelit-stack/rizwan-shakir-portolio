@@ -3,41 +3,43 @@ import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
+// Import project images
+import herTrackerImg from '@/assets/projects/her-tracker.png';
+import captureAiImg from '@/assets/projects/capture-ai.png';
+import beYouSocialImg from '@/assets/projects/be-you-social.png';
+import tradeHarmonizerImg from '@/assets/projects/trade-harmonizer.png';
+import sergioImg from '@/assets/projects/sergio.png';
+
 const projects = [
   {
     id: 1,
-    title: 'Funnel Project Dashboard',
-    tag: 'AdTech UI/UX',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/6d24dd230315489.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    behanceUrl: 'https://www.behance.net/gallery/230315489/AdTech-Dashboard-UIUX-Case-Study-Design',
-  },
-  {
-    id: 2,
-    title: 'HerTracker Mobile App',
-    tag: 'Health & Fitness',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/47b86f229083221.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    behanceUrl: 'https://www.behance.net/gallery/229083221/Health-and-Fitness-Mobile-APP-UIUX-Design',
+    title: 'Her Tracker',
+    tag: 'Health & Wellness',
+    image: herTrackerImg,
   },
   {
     id: 3,
-    title: 'ORIGINO Web App',
-    tag: 'Food & Beverages',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/73fbf0228930783.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    behanceUrl: 'https://www.behance.net/gallery/228930783/Food-Beverages-Web-App-UIUX-Design',
+    title: 'Capture AI',
+    tag: 'AI Dashboard',
+    image: captureAiImg,
   },
   {
-    id: 4,
-    title: 'Police & Security Services',
-    tag: 'UI/UX Design',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/1c818d228598743.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    behanceUrl: 'https://www.behance.net/gallery/228598743/Police-Security-Services-UIUX-Design',
+    id: 7,
+    title: 'Be You Social',
+    tag: 'Social Media App',
+    image: beYouSocialImg,
   },
   {
-    id: 5,
-    title: 'E-Commerce Jewellery',
-    tag: 'E-Commerce',
-    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/528357228314207.Y3JvcCwxNjE2LDEyNjQsMCww.png',
-    behanceUrl: 'https://www.behance.net/gallery/228314207/E-Commerce-Jewellery-Website-Dashboard-UIUX',
+    id: 8,
+    title: 'Trade Harmonizer',
+    tag: 'Supply Chain',
+    image: tradeHarmonizerImg,
+  },
+  {
+    id: 10,
+    title: 'Sergio',
+    tag: 'AI Performance',
+    image: sergioImg,
   },
 ];
 
