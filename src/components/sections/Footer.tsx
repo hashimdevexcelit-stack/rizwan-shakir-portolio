@@ -38,9 +38,9 @@ export const Footer = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <span className="font-serif text-xl font-bold text-primary-foreground">D</span>
+                <span className="font-serif text-xl font-bold text-primary-foreground">RS</span>
               </div>
-              <span className="font-serif text-xl font-semibold">Dev<span className="text-primary">Excel</span></span>
+              <span className="font-serif text-xl font-semibold">Rizwan<span className="text-primary">Shakir</span></span>
             </div>
             <p className="text-muted-foreground mb-6">Transforming ideas into exceptional digital solutions. Building the future, one project at a time.</p>
             <div className="flex gap-3">
@@ -93,7 +93,7 @@ export const Footer = () => {
 
         {/* Bottom */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <p>© 2024 DevExcel IT Solutions. All rights reserved.</p>
+          <p>© 2024 Rizwan Shakir. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>

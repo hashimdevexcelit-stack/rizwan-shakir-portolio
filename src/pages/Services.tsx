@@ -1,95 +1,147 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Search, Code, Smartphone, Globe, Database, Palette, ShoppingCart, Cloud, Shield } from 'lucide-react';
+import { Search, Code, Smartphone, Globe, Database, Palette, ShoppingCart, Cloud, Shield, BarChart3, Gamepad2, Truck, Gem, Users, Play, Activity, Megaphone } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/sections/Footer';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
-const categories = ['All', 'Development', 'Design', 'Mobile', 'Cloud', 'Security'];
+const categories = ['All', 'UI/UX Design', 'Web App', 'Mobile App', 'Dashboard', 'E-Commerce'];
 
 const services = [
   {
     id: 1,
-    title: 'Custom Web Development',
-    description: 'Full-stack web applications built with modern technologies like React, Node.js, and TypeScript.',
-    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop',
-    tags: ['React', 'Node.js', 'TypeScript'],
-    price: '$2,500',
-    category: 'Development',
-    icon: Code,
+    title: 'Funnel Project Dashboard',
+    description: 'Subscription management dashboard with analytics, license tracking, and conversion funnel visualization.',
+    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/6d24dd230315489.Y3JvcCwxNjE2LDEyNjQsMCww.png',
+    tags: ['Dashboard', 'Analytics', 'SaaS'],
+    price: '$3,500',
+    category: 'Dashboard',
+    icon: BarChart3,
+    behanceUrl: 'https://www.behance.net/gallery/230315489/AdTech-Dashboard-UIUX-Case-Study-Design',
   },
   {
     id: 2,
-    title: 'Mobile App Development',
-    description: 'Native and cross-platform mobile applications for iOS and Android using React Native.',
-    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop',
-    tags: ['React Native', 'iOS', 'Android'],
+    title: 'HerTracker - Mobile App',
+    description: 'Health and wellness mobile app UI/UX design for tracking fitness goals and personal health metrics.',
+    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/47b86f229083221.Y3JvcCwxNjE2LDEyNjQsMCww.png',
+    tags: ['Mobile App', 'Health', 'UI/UX'],
     price: '$4,000',
-    category: 'Mobile',
-    icon: Smartphone,
+    category: 'Mobile App',
+    icon: Activity,
+    behanceUrl: 'https://www.behance.net/gallery/229083221/Health-and-Fitness-Mobile-APP-UIUX-Design',
   },
   {
     id: 3,
-    title: 'E-Commerce Solutions',
-    description: 'Complete e-commerce platforms with payment integration, inventory management, and analytics.',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop',
-    tags: ['Shopify', 'Stripe', 'WooCommerce'],
-    price: '$3,500',
-    category: 'Development',
-    icon: ShoppingCart,
+    title: 'ORIGINO - Olive Oil Web App',
+    description: 'Premium olive oil brand web application with elegant UI showcasing products and company story.',
+    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/73fbf0228930783.Y3JvcCwxNjE2LDEyNjQsMCww.png',
+    tags: ['Web App', 'E-Commerce', 'Branding'],
+    price: '$2,800',
+    category: 'Web App',
+    icon: Globe,
+    behanceUrl: 'https://www.behance.net/gallery/228930783/Food-Beverages-Web-App-UIUX-Design',
   },
   {
     id: 4,
-    title: 'UI/UX Design',
-    description: 'Beautiful and intuitive user interfaces with comprehensive UX research and testing.',
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop',
-    tags: ['Figma', 'Prototyping', 'User Research'],
-    price: '$1,800',
-    category: 'Design',
-    icon: Palette,
+    title: 'Police & Security Services',
+    description: 'Comprehensive UI/UX design for law enforcement officer solutions and security management platform.',
+    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/1c818d228598743.Y3JvcCwxNjE2LDEyNjQsMCww.png',
+    tags: ['UI/UX', 'Government', 'Security'],
+    price: '$5,000',
+    category: 'UI/UX Design',
+    icon: Shield,
+    behanceUrl: 'https://www.behance.net/gallery/228598743/Police-Security-Services-UIUX-Design',
   },
   {
     id: 5,
-    title: 'Cloud Architecture',
-    description: 'Scalable cloud infrastructure design and implementation on AWS, GCP, or Azure.',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop',
-    tags: ['AWS', 'GCP', 'Docker'],
-    price: '$5,000',
-    category: 'Cloud',
-    icon: Cloud,
+    title: 'Mobile Game Booking',
+    description: 'Gaming venue booking and management dashboard with real-time availability and booking tracking.',
+    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/0553c0228587891.Y3JvcCwxNjE2LDEyNjQsMCww.png',
+    tags: ['Dashboard', 'Gaming', 'Booking'],
+    price: '$3,200',
+    category: 'Dashboard',
+    icon: Gamepad2,
+    behanceUrl: 'https://www.behance.net/gallery/228587891/Mobile-Game-Booking-Management-UIUX-Design',
   },
   {
     id: 6,
-    title: 'API Development',
-    description: 'RESTful and GraphQL APIs with authentication, rate limiting, and documentation.',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop',
-    tags: ['REST', 'GraphQL', 'OAuth'],
-    price: '$2,000',
-    category: 'Development',
-    icon: Database,
+    title: 'Trade & Supply Chain',
+    description: 'Enterprise dashboard for trade and supply chain management with real-time logistics tracking.',
+    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/3b1d41228519253.Y3JvcCwyMTI4LDE2NjQsMCww.png',
+    tags: ['Dashboard', 'Logistics', 'Enterprise'],
+    price: '$4,500',
+    category: 'Dashboard',
+    icon: Truck,
+    behanceUrl: 'https://www.behance.net/gallery/228519253/Trade-Supply-Chain-Dashboard-UIUX-Design',
   },
   {
     id: 7,
-    title: 'Website Redesign',
-    description: 'Transform your existing website with modern design principles and improved UX.',
-    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=300&fit=crop',
-    tags: ['Redesign', 'Responsive', 'SEO'],
-    price: '$2,200',
-    category: 'Design',
-    icon: Globe,
+    title: 'E-Commerce Jewellery',
+    description: 'Luxury jewellery e-commerce platform with elegant product showcase and admin dashboard.',
+    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/528357228314207.Y3JvcCwxNjE2LDEyNjQsMCww.png',
+    tags: ['E-Commerce', 'Luxury', 'Dashboard'],
+    price: '$3,800',
+    category: 'E-Commerce',
+    icon: Gem,
+    behanceUrl: 'https://www.behance.net/gallery/228314207/E-Commerce-Jewellery-Website-Dashboard-UIUX',
   },
   {
     id: 8,
-    title: 'Security Audit',
-    description: 'Comprehensive security assessment and vulnerability testing for your applications.',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop',
-    tags: ['Penetration Testing', 'OWASP', 'Compliance'],
+    title: 'Be You Social App',
+    description: 'Social media mobile application UI/UX design with community features and content sharing.',
+    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/1fa735227993011.Y3JvcCwyMTI4LDE2NjQsMCww.png',
+    tags: ['Mobile App', 'Social', 'Community'],
+    price: '$4,200',
+    category: 'Mobile App',
+    icon: Users,
+    behanceUrl: 'https://www.behance.net/gallery/227993011/Social-Media-App-UI-UX-Design',
+  },
+  {
+    id: 9,
+    title: 'Entertainment Management',
+    description: 'Comprehensive entertainment management system for events, bookings, and venue management.',
+    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a014be227584757.Y3JvcCwxNjE2LDEyNjQsMCww.png',
+    tags: ['Web App', 'Entertainment', 'Management'],
     price: '$3,000',
-    category: 'Security',
-    icon: Shield,
+    category: 'Web App',
+    icon: Play,
+    behanceUrl: 'https://www.behance.net/gallery/227584757/Entertainment-Management-System-UIUX-Design',
+  },
+  {
+    id: 10,
+    title: 'SaaS AdTech Platform',
+    description: 'Advertising technology SaaS platform with campaign management and performance analytics.',
+    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/80869e228070589.Y3JvcCwxNjE2LDEyNjQsMCww.png',
+    tags: ['SaaS', 'AdTech', 'Analytics'],
+    price: '$5,500',
+    category: 'Dashboard',
+    icon: Megaphone,
+    behanceUrl: 'https://www.behance.net/gallery/228070589/SaaS-AdTech-UIUX-Case-Study-Design',
+  },
+  {
+    id: 11,
+    title: 'Mommy Tummy App',
+    description: 'Pregnancy and maternity care mobile app with health tracking and milestone monitoring.',
+    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/8d1b05227537255.Y3JvcCwxNjE2LDEyNjQsMCww.png',
+    tags: ['Mobile App', 'Health', 'Wellness'],
+    price: '$3,500',
+    category: 'Mobile App',
+    icon: Activity,
+    behanceUrl: 'https://www.behance.net/gallery/227537255/Health-and-Fitness-App-UIUX-Case-Study-Design',
+  },
+  {
+    id: 12,
+    title: 'E-Commerce Management',
+    description: 'Complete e-commerce management application with inventory, orders, and analytics dashboards.',
+    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/3b28f7227602953.Y3JvcCwyMTI4LDE2NjQsMCww.png',
+    tags: ['E-Commerce', 'Dashboard', 'Management'],
+    price: '$4,000',
+    category: 'E-Commerce',
+    icon: ShoppingCart,
+    behanceUrl: 'https://www.behance.net/gallery/227602953/E-Commerce-Management-App-UIUX-Design',
   },
 ];
 
@@ -119,13 +171,13 @@ const Services = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="font-mono text-sm text-primary uppercase tracking-widest mb-4 block">
-              // Our Services
+              // My Portfolio
             </span>
             <h1 className="font-serif text-4xl md:text-6xl font-bold mb-4">
-              What We <span className="gradient-text">Offer</span>
+              Featured <span className="gradient-text">Projects</span>
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Comprehensive digital solutions tailored to transform your business and drive growth
+              Explore my latest UI/UX designs and digital solutions crafted with passion and precision
             </p>
           </motion.div>
 
@@ -140,7 +192,7 @@ const Services = () => {
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
               <Input
                 type="text"
-                placeholder="Search services..."
+                placeholder="Search projects..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-12 py-6 text-lg bg-card border-border"
@@ -207,9 +259,9 @@ const Services = () => {
                       size="sm" 
                       variant="outline" 
                       className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
-                      onClick={() => navigate(`/services/${service.id}`)}
+                      onClick={() => window.open(service.behanceUrl, '_blank')}
                     >
-                      Learn More
+                      View Project
                     </Button>
                   </div>
                 </div>
@@ -219,7 +271,7 @@ const Services = () => {
 
           {filteredServices.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">No services found matching your criteria.</p>
+              <p className="text-muted-foreground">No projects found matching your criteria.</p>
             </div>
           )}
         </div>

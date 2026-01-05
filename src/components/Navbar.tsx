@@ -64,13 +64,13 @@ export const Navbar = () => {
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <motion.a
-          href="#"
+          href="/"
           className="flex items-center gap-2 group"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
           <div className="relative w-10 h-10 rounded-lg bg-primary flex items-center justify-center overflow-hidden">
-            <span className="font-serif text-xl font-bold text-primary-foreground">D</span>
+            <span className="font-serif text-xl font-bold text-primary-foreground">RS</span>
             <motion.div
               className="absolute inset-0 bg-purple-glow/30"
               initial={{ x: '-100%' }}
@@ -79,7 +79,7 @@ export const Navbar = () => {
             />
           </div>
           <span className="font-serif text-xl font-semibold hidden sm:block">
-            Dev<span className="text-primary">Excel</span>
+            Rizwan<span className="text-primary">Shakir</span>
           </span>
         </motion.a>
 
@@ -149,6 +149,7 @@ export const Navbar = () => {
             <Button
               className="hidden sm:flex gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-md hover:shadow-lg transition-all duration-300"
               size="default"
+              onClick={() => navigate('/contact')}
             >
               <Calendar className="w-4 h-4" />
               Schedule a Call
@@ -192,7 +193,7 @@ export const Navbar = () => {
                   {link.label}
                 </motion.button>
               ))}
-              <Button className="mt-4 gap-2 w-full">
+              <Button className="mt-4 gap-2 w-full" onClick={() => { navigate('/contact'); setIsMobileMenuOpen(false); }}>
                 <Calendar className="w-4 h-4" />
                 Schedule a Call
               </Button>
