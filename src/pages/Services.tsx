@@ -259,9 +259,9 @@ const Services = () => {
                       size="sm" 
                       variant="outline" 
                       className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
-                      onClick={() => window.open(service.behanceUrl, '_blank')}
+                      onClick={() => navigate(`/services/${service.id}`)}
                     >
-                      View Project
+                      Learn More
                     </Button>
                   </div>
                 </div>
