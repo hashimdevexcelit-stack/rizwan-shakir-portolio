@@ -6,33 +6,38 @@ import { useNavigate } from 'react-router-dom';
 const projects = [
   {
     id: 1,
-    title: 'E-Commerce Platform',
-    tag: 'Web Development',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop',
+    title: 'Funnel Project Dashboard',
+    tag: 'AdTech UI/UX',
+    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/6d24dd230315489.Y3JvcCwxNjE2LDEyNjQsMCww.png',
+    behanceUrl: 'https://www.behance.net/gallery/230315489/AdTech-Dashboard-UIUX-Case-Study-Design',
   },
   {
     id: 2,
-    title: 'AI Analytics Dashboard',
-    tag: 'Data Science',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop',
+    title: 'HerTracker Mobile App',
+    tag: 'Health & Fitness',
+    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/47b86f229083221.Y3JvcCwxNjE2LDEyNjQsMCww.png',
+    behanceUrl: 'https://www.behance.net/gallery/229083221/Health-and-Fitness-Mobile-APP-UIUX-Design',
   },
   {
     id: 3,
-    title: 'Mobile Banking App',
-    tag: 'FinTech',
-    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&h=800&fit=crop',
+    title: 'ORIGINO Web App',
+    tag: 'Food & Beverages',
+    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/73fbf0228930783.Y3JvcCwxNjE2LDEyNjQsMCww.png',
+    behanceUrl: 'https://www.behance.net/gallery/228930783/Food-Beverages-Web-App-UIUX-Design',
   },
   {
     id: 4,
-    title: 'Healthcare Management',
-    tag: 'Health Tech',
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=800&fit=crop',
+    title: 'Police & Security Services',
+    tag: 'UI/UX Design',
+    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/1c818d228598743.Y3JvcCwxNjE2LDEyNjQsMCww.png',
+    behanceUrl: 'https://www.behance.net/gallery/228598743/Police-Security-Services-UIUX-Design',
   },
   {
     id: 5,
-    title: 'Smart Home IoT',
-    tag: 'IoT Solutions',
-    image: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=1200&h=800&fit=crop',
+    title: 'E-Commerce Jewellery',
+    tag: 'E-Commerce',
+    image: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/528357228314207.Y3JvcCwxNjE2LDEyNjQsMCww.png',
+    behanceUrl: 'https://www.behance.net/gallery/228314207/E-Commerce-Jewellery-Website-Dashboard-UIUX',
   },
 ];
 
@@ -174,7 +179,7 @@ export const StatsSection = () => {
                       transition={{ delay: 0.3 }}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      onClick={() => navigate(`/services/${projects[currentProject].id}`)}
+                      onClick={() => window.open(projects[currentProject].behanceUrl, '_blank')}
                     >
                       View Project
                       <ExternalLink className="w-4 h-4" />
