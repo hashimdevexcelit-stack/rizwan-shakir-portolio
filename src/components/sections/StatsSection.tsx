@@ -179,7 +179,7 @@ export const StatsSection = () => {
                       transition={{ delay: 0.3 }}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      onClick={() => window.open(projects[currentProject].behanceUrl, '_blank')}
+                      onClick={() => navigate(`/services/${projects[currentProject].id}`)}
                     >
                       View Project
                       <ExternalLink className="w-4 h-4" />
