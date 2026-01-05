@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Linkedin, Twitter, Instagram, Youtube, Globe, Mail, MessageCircle, Briefcase } from 'lucide-react';
+import rizwanImage from '@/assets/rizwan-shakir.jfif';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/sections/Footer';
 
@@ -120,7 +121,7 @@ const Links = () => {
             <div className="relative inline-block mb-6">
               <div className="absolute inset-0 bg-primary/40 blur-2xl rounded-full scale-110" />
               <motion.img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face"
+                src={rizwanImage}
                 alt="Rizwan Shakir"
                 className="relative w-28 h-28 rounded-full object-cover border-4 border-primary/50"
                 initial={{ scale: 0 }}
