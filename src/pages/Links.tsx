@@ -109,7 +109,7 @@ const Links = () => {
       <Navbar />
       
       <main className="pt-32 pb-24">
-        <div className="container mx-auto px-6 max-w-2xl">
+        <div className="container mx-auto px-6 max-w-3xl">
           {/* Profile Header */}
           <motion.div 
             className="text-center mb-12"
@@ -156,35 +156,56 @@ const Links = () => {
             </motion.p>
           </motion.div>
 
-          {/* Links Grid */}
-          <div className="space-y-3">
-            {socialLinks.map((link, index) => (
-              <motion.a
-                key={link.name}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`group flex items-center gap-4 p-4 rounded-xl border border-border ${link.bgColor} transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10`}
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.05 }}
-                whileHover={{ scale: 1.02, x: 5 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${link.color} flex items-center justify-center`}>
-                  <link.icon className="w-6 h-6 text-white" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold group-hover:text-primary transition-colors">
-                    {link.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {link.description}
-                  </p>
-                </div>
-                <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-              </motion.a>
-            ))}
+          {/* Bento Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[100px]">
+            {socialLinks.map((link, index) => {
+              // Define which items should be larger (span 2 cols or 2 rows)
+              const isLarge = index === 0 || index === 3 || index === 8;
+              const isTall = index === 1 || index === 6;
+              const isWide = index === 4 || index === 10;
+              
+              return (
+                <motion.a
+                  key={link.name}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`group relative overflow-hidden rounded-2xl border border-border ${link.bgColor} transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 flex flex-col justify-between p-4
+                    ${isLarge ? 'col-span-2 row-span-2' : ''}
+                    ${isTall && !isLarge ? 'row-span-2' : ''}
+                    ${isWide && !isLarge ? 'col-span-2' : ''}
+                  `}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.04, type: 'spring', stiffness: 200 }}
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {/* Gradient overlay */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${link.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
+                  
+                  {/* Icon */}
+                  <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br ${link.color} flex items-center justify-center shadow-lg`}>
+                    <link.icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="mt-auto">
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-semibold text-sm md:text-base group-hover:text-primary transition-colors">
+                        {link.name}
+                      </h3>
+                      <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors opacity-0 group-hover:opacity-100" />
+                    </div>
+                    {(isLarge || isTall || isWide) && (
+                      <p className="text-xs md:text-sm text-muted-foreground mt-1 line-clamp-2">
+                        {link.description}
+                      </p>
+                    )}
+                  </div>
+                </motion.a>
+              );
+            })}
           </div>
 
           {/* Footer Note */}
