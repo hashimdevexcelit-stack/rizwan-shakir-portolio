@@ -182,7 +182,7 @@ const ServiceDetail = () => {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Project not found</h1>
-          <Button onClick={() => navigate('/services')}>Back to Projects</Button>
+          <Button onClick={() => navigate('/portfolio')}>Back to Portfolio</Button>
         </div>
       </div>
     );
@@ -203,7 +203,7 @@ const ServiceDetail = () => {
           >
             <Button
               variant="ghost"
-              onClick={() => navigate('/services')}
+              onClick={() => navigate('/portfolio')}
               className="mb-8 gap-2"
             >
               <ArrowLeft className="w-4 h-4" />
