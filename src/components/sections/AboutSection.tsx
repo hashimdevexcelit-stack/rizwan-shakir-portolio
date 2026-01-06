@@ -35,6 +35,8 @@ export const AboutSection = () => {
                 <img
                   src={rizwanImage}
                   alt="Rizwan Shakir"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
                 {/* Gradient overlay */}

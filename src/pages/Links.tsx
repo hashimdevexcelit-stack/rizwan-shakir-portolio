@@ -123,6 +123,8 @@ const Links = () => {
               <motion.img
                 src={rizwanImage}
                 alt="Rizwan Shakir"
+                loading="lazy"
+                decoding="async"
                 className="relative w-28 h-28 rounded-full object-cover border-4 border-primary/50"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
