@@ -9,8 +9,8 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 const navLinks = [
   { label: 'About', href: '#about', type: 'scroll' },
   { label: 'Services', href: '/services', type: 'route' },
+  { label: 'Portfolio', href: '/portfolio', type: 'route' },
   { label: 'Blog', href: '/blog', type: 'route' },
-  { label: 'AI Chat', href: '/ai-chat', type: 'route' },
   { label: 'FAQ', href: '#faq', type: 'scroll' },
   { label: 'Links', href: '/links', type: 'route' },
 ];

@@ -5,11 +5,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/context/ThemeContext";
 import Index from "./pages/Index";
-import Services from "./pages/Services";
+import Portfolio from "./pages/Portfolio";
 import ServiceDetail from "./pages/ServiceDetail";
+import Services from "./pages/Services";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
-import AIChat from "./pages/AIChat";
 import Links from "./pages/Links";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -25,11 +25,11 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/portfolio/:id" element={<ServiceDetail />} />
             <Route path="/services" element={<Services />} />
-            <Route path="/services/:id" element={<ServiceDetail />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogDetail />} />
-            <Route path="/ai-chat" element={<AIChat />} />
             <Route path="/links" element={<Links />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
