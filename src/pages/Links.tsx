@@ -164,46 +164,46 @@ const Links = () => {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex flex-col items-center justify-center p-6 rounded-lg bg-black/80 border border-cyan-500/30 overflow-hidden transition-all duration-300 hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(0,255,255,0.3)]"
+                className="group relative flex flex-col items-center justify-center p-6 rounded-lg bg-gray-100 dark:bg-black/80 border border-primary/30 dark:border-cyan-500/30 overflow-hidden transition-all duration-300 hover:border-primary dark:hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] dark:hover:shadow-[0_0_30px_rgba(0,255,255,0.3)]"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.05, type: 'spring', stiffness: 200 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {/* Scanline effect */}
-                <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,255,255,0.03)_50%)] bg-[length:100%_4px] pointer-events-none" />
+                {/* Scanline effect - dark mode only */}
+                <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,255,255,0.03)_50%)] bg-[length:100%_4px] pointer-events-none opacity-0 dark:opacity-100" />
                 
                 {/* Corner accents */}
-                <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-cyan-400" />
-                <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-cyan-400" />
-                <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-cyan-400" />
-                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-cyan-400" />
+                <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary dark:border-cyan-400" />
+                <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-primary dark:border-cyan-400" />
+                <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-primary dark:border-cyan-400" />
+                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary dark:border-cyan-400" />
                 
                 {/* Glow effect */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${link.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${link.color} opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-300 blur-xl`} />
                 
                 {/* Icon with neon glow */}
                 <div className="relative mb-3">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${link.color} blur-lg opacity-50 group-hover:opacity-80 transition-opacity`} />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${link.color} blur-lg opacity-30 dark:opacity-50 group-hover:opacity-50 dark:group-hover:opacity-80 transition-opacity`} />
                   <div className={`relative w-14 h-14 rounded-lg bg-gradient-to-br ${link.color} flex items-center justify-center border border-white/20`}>
                     <link.icon className="w-7 h-7 text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
                   </div>
                 </div>
                 
                 {/* Text */}
-                <h3 className="font-mono font-bold text-sm text-cyan-300 group-hover:text-cyan-100 transition-colors text-center tracking-wider uppercase">
+                <h3 className="font-mono font-bold text-sm text-foreground dark:text-cyan-300 group-hover:text-primary dark:group-hover:text-cyan-100 transition-colors text-center tracking-wider uppercase">
                   {link.name}
                 </h3>
                 
                 {/* Animated border beam on hover */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-[shimmer_2s_infinite]" />
+                  <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary dark:via-cyan-400 to-transparent animate-[shimmer_2s_infinite]" />
                   <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-pink-500 to-transparent animate-[shimmer_2s_infinite_reverse]" />
                 </div>
                 
                 {/* External link indicator */}
-                <ExternalLink className="absolute top-2 right-2 w-3 h-3 text-cyan-500/50 group-hover:text-cyan-300 transition-colors" />
+                <ExternalLink className="absolute top-2 right-2 w-3 h-3 text-muted-foreground dark:text-cyan-500/50 group-hover:text-primary dark:group-hover:text-cyan-300 transition-colors" />
               </motion.a>
             ))}
           </div>
