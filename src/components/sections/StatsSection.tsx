@@ -148,6 +148,8 @@ export const StatsSection = () => {
                   <img
                     src={projects[currentProject].image}
                     alt={projects[currentProject].title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover"
                   />
 

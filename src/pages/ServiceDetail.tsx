@@ -222,6 +222,8 @@ const ServiceDetail = () => {
                 <img
                   src={service.image}
                   alt={service.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-auto object-cover"
                 />
                 <div className="absolute top-6 right-6 w-14 h-14 rounded-2xl bg-primary flex items-center justify-center">
