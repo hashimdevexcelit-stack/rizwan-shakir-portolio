@@ -1,11 +1,12 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Check, ArrowRight } from 'lucide-react';
+import { ArrowLeft, Check, ArrowRight, MessageSquare } from 'lucide-react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/sections/Footer';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { getServiceById, servicesData } from '@/data/servicesData';
+import { ServiceContactForm } from '@/components/ServiceContactForm';
 
 const ServicesDetail = () => {
   const { id } = useParams();
@@ -223,6 +224,23 @@ const ServicesDetail = () => {
                       </li>
                     ))}
                   </ul>
+                </div>
+
+                {/* Contact Form */}
+                <div className="rounded-2xl border border-border bg-card p-6">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center`}>
+                      <MessageSquare className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-serif text-lg font-bold">Inquire About This Service</h3>
+                      <p className="text-xs text-muted-foreground">Get a personalized quote</p>
+                    </div>
+                  </div>
+                  <ServiceContactForm 
+                    serviceName={service.title} 
+                    serviceColor={service.color}
+                  />
                 </div>
               </motion.div>
             </div>
