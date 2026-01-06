@@ -109,7 +109,7 @@ const Links = () => {
       <Navbar />
       
       <main className="pt-32 pb-24">
-        <div className="container mx-auto px-6 max-w-3xl">
+        <div className="container mx-auto px-6 max-w-2xl">
           {/* Profile Header */}
           <motion.div 
             className="text-center mb-12"
@@ -156,56 +156,45 @@ const Links = () => {
             </motion.p>
           </motion.div>
 
-          {/* Bento Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[100px]">
-            {socialLinks.map((link, index) => {
-              // Define which items should be larger (span 2 cols or 2 rows)
-              const isLarge = index === 0 || index === 3 || index === 8;
-              const isTall = index === 1 || index === 6;
-              const isWide = index === 4 || index === 10;
-              
-              return (
-                <motion.a
-                  key={link.name}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`group relative overflow-hidden rounded-2xl border border-border ${link.bgColor} transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 flex flex-col justify-between p-4
-                    ${isLarge ? 'col-span-2 row-span-2' : ''}
-                    ${isTall && !isLarge ? 'row-span-2' : ''}
-                    ${isWide && !isLarge ? 'col-span-2' : ''}
-                  `}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.04, type: 'spring', stiffness: 200 }}
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {/* Gradient overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${link.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
-                  
-                  {/* Icon */}
-                  <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br ${link.color} flex items-center justify-center shadow-lg`}>
-                    <link.icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
-                  </div>
-                  
-                  {/* Content */}
-                  <div className="mt-auto">
-                    <div className="flex items-center justify-between">
-                      <h3 className="font-semibold text-sm md:text-base group-hover:text-primary transition-colors">
-                        {link.name}
-                      </h3>
-                      <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors opacity-0 group-hover:opacity-100" />
-                    </div>
-                    {(isLarge || isTall || isWide) && (
-                      <p className="text-xs md:text-sm text-muted-foreground mt-1 line-clamp-2">
-                        {link.description}
-                      </p>
-                    )}
-                  </div>
-                </motion.a>
-              );
-            })}
+          {/* Glassmorphism Links */}
+          <div className="space-y-4">
+            {socialLinks.map((link, index) => (
+              <motion.a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex items-center gap-4 p-5 rounded-2xl backdrop-blur-xl bg-white/10 dark:bg-white/5 border border-white/20 dark:border-white/10 shadow-lg shadow-black/5 transition-all duration-300 hover:bg-white/20 dark:hover:bg-white/10 hover:border-white/30 hover:shadow-xl hover:shadow-primary/10"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05, type: 'spring', stiffness: 150 }}
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {/* Glow effect behind icon */}
+                <div className={`absolute left-5 w-12 h-12 bg-gradient-to-br ${link.color} blur-xl opacity-30 group-hover:opacity-50 transition-opacity`} />
+                
+                {/* Icon */}
+                <div className={`relative w-12 h-12 rounded-xl bg-gradient-to-br ${link.color} flex items-center justify-center shadow-lg`}>
+                  <link.icon className="w-6 h-6 text-white" />
+                </div>
+                
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                    {link.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground truncate">
+                    {link.description}
+                  </p>
+                </div>
+                
+                {/* Arrow */}
+                <div className="w-8 h-8 rounded-full bg-white/10 dark:bg-white/5 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                </div>
+              </motion.a>
+            ))}
           </div>
 
           {/* Footer Note */}
