@@ -130,16 +130,16 @@ export const StatsSection = () => {
             onMouseLeave={() => setIsHovered(false)}
           >
             {/* Screen Bezel */}
-            <div className="absolute top-0 left-0 right-0 h-6 bg-foreground/80 flex items-center justify-center">
+            {/* <div className="absolute top-0 left-0 right-0 h-6 bg-foreground/80 flex items-center justify-center">
               <div className="w-2 h-2 rounded-full bg-foreground/30" />
-            </div>
+            </div> */}
 
             {/* Screen Content */}
-            <div className="relative w-full h-full pt-6 bg-card overflow-hidden group">
+            <div className="relative w-full h-full  bg-card overflow-hidden group">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={projects[currentProject].id}
-                  className="absolute inset-0 pt-6"
+                  className="absolute inset-0 "
                   initial={{ opacity: 0, scale: 1.05 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
@@ -155,7 +155,7 @@ export const StatsSection = () => {
 
                   {/* Hover Overlay */}
                   <motion.div
-                    className="absolute inset-0 pt-6 bg-background/80 backdrop-blur-sm flex flex-col items-center justify-center"
+                    className="absolute inset-0  bg-background/80 backdrop-blur-sm flex flex-col items-center justify-center"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: isHovered ? 1 : 0 }}
                     transition={{ duration: 0.3 }}
@@ -212,11 +212,10 @@ export const StatsSection = () => {
                   <button
                     key={index}
                     onClick={() => setCurrentProject(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === currentProject
-                        ? 'w-6 bg-primary'
-                        : 'bg-foreground/30 hover:bg-foreground/50'
-                    }`}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentProject
+                      ? 'w-6 bg-primary'
+                      : 'bg-foreground/30 hover:bg-foreground/50'
+                      }`}
                   />
                 ))}
               </div>
@@ -241,7 +240,7 @@ export const StatsSection = () => {
             >
               {/* Background gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
+
               <div className="relative z-10">
                 <div className="text-4xl md:text-5xl font-serif font-bold text-primary mb-2">
                   <Counter value={stat.value} suffix={stat.suffix} />

@@ -15,7 +15,7 @@ export const AboutSection = () => {
     <section id="about" className="py-24 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1/2 h-96 bg-gradient-to-r from-primary/10 to-transparent blur-3xl pointer-events-none" />
-      
+
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Image Column */}
@@ -29,7 +29,7 @@ export const AboutSection = () => {
             <div className="relative group">
               {/* Glow behind image */}
               <div className="absolute inset-0 bg-primary/40 blur-3xl rounded-full scale-75 opacity-60 group-hover:opacity-100 group-hover:scale-90 transition-all duration-500 -z-10" />
-              
+
               {/* Main Image */}
               <div className="relative z-10 rounded-2xl overflow-hidden aspect-[4/5] max-w-md mx-auto lg:mx-0 group-hover:scale-105 transition-transform duration-500 ease-out">
                 <img
@@ -45,7 +45,7 @@ export const AboutSection = () => {
 
               {/* Decorative frame */}
               <div className="absolute -inset-4 border-2 border-primary/30 rounded-2xl -z-10 hidden lg:block" />
-              
+
               {/* Floating decorative elements */}
               <motion.div
                 className="absolute -right-8 -top-8 w-24 h-24 rounded-full bg-primary/20 blur-xl hidden lg:block"
@@ -60,7 +60,7 @@ export const AboutSection = () => {
 
               {/* Stats floating card */}
               <motion.div
-                className="absolute -right-4 bottom-20 bg-card border border-border rounded-xl p-4 shadow-lg hidden lg:block"
+                className="absolute -right-4 bottom-20 bg-card border border-border rounded-xl p-4 shadow-lg hidden lg:block z-50"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -119,19 +119,19 @@ export const AboutSection = () => {
               transition={{ delay: 0.4 }}
             >
               <p>
-                As the CEO of DevExcel IT Solutions, I've dedicated over a decade to mastering 
-                the art of software development and digital transformation. My journey began 
-                as a passionate developer, and through years of hands-on experience and 
+                As the CEO of DevExcel IT Solutions, I've dedicated over a decade to mastering
+                the art of software development and digital transformation. My journey began
+                as a passionate developer, and through years of hands-on experience and
                 continuous learning, I've evolved into a technology leader.
               </p>
               <p>
-                I believe in building solutions that not only solve problems but create 
-                lasting value. Whether it's architecting scalable systems, leading 
-                cross-functional teams, or strategizing digital roadmaps for enterprises, 
+                I believe in building solutions that not only solve problems but create
+                lasting value. Whether it's architecting scalable systems, leading
+                cross-functional teams, or strategizing digital roadmaps for enterprises,
                 I bring a unique blend of technical expertise and business acumen.
               </p>
               <p>
-                My mission is to empower businesses with cutting-edge technology solutions 
+                My mission is to empower businesses with cutting-edge technology solutions
                 that drive growth, efficiency, and innovation. Let's build the future together.
               </p>
             </motion.div>
