@@ -239,9 +239,9 @@ const TechItem = ({ name, Icon }: TechItemProps) => {
 
       {/* Tooltip */}
       <motion.div
-        className="absolute -bottom-10 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-lg whitespace-nowrap z-10"
-        initial={{ opacity: 0, y: -5 }}
-        animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : -5 }}
+        className="absolute -bottom-10 left-1/2 px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-lg whitespace-nowrap z-10"
+        initial={{ opacity: 0, x: '-50%', y: -5 }}
+        animate={{ opacity: isHovered ? 1 : 0, x: '-50%', y: isHovered ? 0 : -5 }}
         transition={{ duration: 0.2 }}
       >
         {name}

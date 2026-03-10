@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import rizwanImage from '@/assets/rizwan-shakir.jfif';
 import { Github, Linkedin, Twitter, Instagram, Mail, MapPin, Phone } from 'lucide-react';
 
 const links = {
@@ -37,8 +38,12 @@ export const Footer = () => {
           {/* Brand */}
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <span className="font-serif text-xl font-bold text-primary-foreground">RS</span>
+              <div className="w-10 h-10 rounded-[50%] bg-primary flex items-center justify-center overflow-hidden">
+                <img
+                  src={rizwanImage}
+                  alt="Rizwan Shakir"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <span className="font-serif text-xl font-semibold">Rizwan<span className="text-primary">Shakir</span></span>
             </div>

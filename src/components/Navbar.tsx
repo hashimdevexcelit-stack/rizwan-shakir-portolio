@@ -5,6 +5,7 @@ import { useTheme } from '@/context/ThemeContext';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import rizwanImage from '@/assets/rizwan-shakir.jfif';
 
 const navLinks = [
   { label: 'About', href: '#about', type: 'scroll' },
@@ -69,8 +70,12 @@ export const Navbar = () => {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          <div className="relative w-10 h-10 rounded-lg bg-primary flex items-center justify-center overflow-hidden">
-            <span className="font-serif text-xl font-bold text-primary-foreground">RS</span>
+          <div className="relative w-10 h-10 rounded-[50%] bg-primary flex items-center justify-center overflow-hidden">
+            <img
+              src={rizwanImage}
+              alt="Rizwan Shakir"
+              className="w-full h-full object-cover"
+            />
             <motion.div
               className="absolute inset-0 bg-purple-glow/30"
               initial={{ x: '-100%' }}
